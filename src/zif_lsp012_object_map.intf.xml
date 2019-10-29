@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+    <LANGU>E</LANGU>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>CONTAINS_KEY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks whether key is contained</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>CONTAINS_VALUE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks whether value is contained</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a Value to the Key</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET_BY_POSITION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the Object at a Specific Position</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET_KEYS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns all Keys</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET_POSITION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the Position of an Object in the Map</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET_VALUES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns all Values</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET_VALUES_ITERATOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns an Iterator for Objects Contained</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>GET_VALUES_TABLE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns Objects as an Internal Table</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>IS_EMPTY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks Whether Map Contains Elements</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_LSP012_OBJECT_MAP</CLSNAME>
+     <CMPNAME>SIZE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the Number of Elements Contained</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
