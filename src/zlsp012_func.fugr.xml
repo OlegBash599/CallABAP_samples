@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Functions for Call ABAP</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZLSP012_FUNCD01</SOBJ_NAME>
+    <SOBJ_NAME>LZLSP012_FUNCP01</SOBJ_NAME>
+    <SOBJ_NAME>LZLSP012_FUNCTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZLSP012_FUNC</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>Z_LSP012_GET_RATES</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Getting Rates from Destination</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_TRYNUM</PARAMETER>
+       <TYP>SYINDEX</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ET_RATES</PARAMETER>
+       <TYP>ZTLSP012_RATES_TAB</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EV_CHANGED</PARAMETER>
+       <TYP>CHAR1</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_TRYNUM</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Loop Index</STEXT>
+       <INDEX> 001</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_RATES</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ZTLSP012_RATES -&gt; tab</STEXT>
+       <INDEX> 002</INDEX>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_CHANGED</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Single-Character Flag</STEXT>
+       <INDEX> 003</INDEX>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_LSP012_START_COMM</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Start Command</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_GUID</PARAMETER>
+       <TYP>SYSUUID_C</TYP>
+      </RSIMP>
+     </IMPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_GUID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>UUID in character form</STEXT>
+       <INDEX> 001</INDEX>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
