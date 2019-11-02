@@ -52,6 +52,7 @@ CLASS zcl_lsp012_linux_os IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD os_linux_comm.
+  " example where OS is more efficient than through ABAP environment
     " wget -P /usr/sap/MDD/D00/work/TECHLOAD/ http://data.nalog.ru/Public/Downloads/20191014/fias_delta_xml.rar
 *    METHODS os_linux_comm
 *        IMPORTING iv_name TYPE sxpglogcmd
