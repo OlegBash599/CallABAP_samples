@@ -189,7 +189,7 @@ CLASS lcl_reader_fs IMPLEMENTATION.
   ENDMETHOD.                    "fill_init_data
 
   METHOD lif_reader~show_data.
-    zcl_lsp010_html=>get_instance( iv_title = 'ABAP Table' )->add_para_val_ch(
+    ZCL_LSP012_HTML=>get_instance( iv_title = 'ABAP Table' )->add_para_val_ch(
         iv_id    = 'Reader FileSys'
         iv_value = | Кол-во записей { lines( me->lif_reader~mt_task_list ) }|
     )->add_tab_ch( it_tab = me->lif_reader~mt_task_list )->show( ).
@@ -373,7 +373,7 @@ CLASS lcl_reader_db IMPLEMENTATION.
   ENDMETHOD.                    "fill_init_data
 
   METHOD lif_reader~show_data.
-    zcl_lsp010_html=>get_instance( iv_title = 'ABAP Table' )->add_para_val_ch(
+    ZCL_LSP012_HTML=>get_instance( iv_title = 'ABAP Table' )->add_para_val_ch(
         iv_id    = 'Reader DataBase'
         iv_value = | Кол-во записей { lines( me->lif_reader~mt_task_list ) }|
     )->add_tab_ch( it_tab = me->lif_reader~mt_task_list )->show( ).
