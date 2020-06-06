@@ -317,12 +317,14 @@ CLASS lcl_decorator IMPLEMENTATION.
     lv_xml_str = lo_xml->get_xml_str( ).
 
     IF lv_xml_str IS INITIAL.
-      zcl_lsp010_html=>get_instance( )->add_para_val_ch(
+"      zcl_lsp010_html=>get_instance( )->add_para_val_ch(
+      zcl_lsp012_html=>get_instance( )->add_para_val_ch(
           iv_id    = 'NO_DATA'
           iv_value = 'Нет данных в XML'
       )->show( ).
     ELSE.
-      zcl_lsp010_html=>get_instance( )->show_xml( iv_xml = lv_xml_str ).
+      " zcl_lsp010_html=>get_instance( )->show_xml( iv_xml = lv_xml_str ).
+       zcl_lsp012_html=>get_instance( )->show_xml( iv_xml = lv_xml_str ).
     ENDIF.
 
 

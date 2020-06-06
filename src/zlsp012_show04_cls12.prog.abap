@@ -371,33 +371,41 @@ CLASS lcl_proxy IMPLEMENTATION.
   METHOD run_step3.
     " показать на генерация consumer через SOAP
     " http://www.dneonline.com/calculator.asmx?wsdl
-    DATA ls_input  TYPE zcalcadd_soap_in.
-    DATA ls_output  TYPE zcalcadd_soap_out.
-    DATA lx_sys_fault TYPE REF TO cx_ai_system_fault.
 
-    ls_input-int_a = 5.
-    ls_input-int_b = 4.
 
-    TRY .
-        DATA(lo_calc_proxy) = NEW zcalcco_calculator_soap( 'DEFAULT' ).
 
-        lo_calc_proxy->add(
-          EXPORTING
-            input  = ls_input
-          IMPORTING
-            output = ls_output
-        ).
+ " firtsly need to be generated via SOAP
 
-        zcl_lsp012_html=>get_instance(
-*        iv_title =
-      )->add_para_val_ch(
-          iv_id    = 'SOAP_OUTPUT'
-          iv_value = CONV text200( ls_output-add_result )
-       )->show( ).
-
-      CATCH cx_ai_system_fault INTO lx_sys_fault.
-
-    ENDTRY.
+*
+*
+*
+*    DATA ls_input  TYPE zcalcadd_soap_in.
+*    DATA ls_output  TYPE zcalcadd_soap_out.
+*    DATA lx_sys_fault TYPE REF TO cx_ai_system_fault.
+*
+*    ls_input-int_a = 5.
+*    ls_input-int_b = 4.
+*
+*    TRY .
+*        DATA(lo_calc_proxy) = NEW zcalcco_calculator_soap( 'DEFAULT' ).
+*
+*        lo_calc_proxy->add(
+*          EXPORTING
+*            input  = ls_input
+*          IMPORTING
+*            output = ls_output
+*        ).
+*
+*        zcl_lsp012_html=>get_instance(
+**        iv_title =
+*      )->add_para_val_ch(
+*          iv_id    = 'SOAP_OUTPUT'
+*          iv_value = CONV text200( ls_output-add_result )
+*       )->show( ).
+*
+*      CATCH cx_ai_system_fault INTO lx_sys_fault.
+*
+*    ENDTRY.
 
 
 

@@ -222,7 +222,8 @@ CLASS lcl_simple_area IMPLEMENTATION.
     me->lif_area~mv_area_id = 'ZSIMPLE$'.
   ENDMETHOD.                    "set_area_id
   METHOD lif_area~show.
-    zcl_lsp010_html=>get_instance( )->add_tab_ch( it_tab = mt_gen_area )->show( ).
+"    zcl_lsp010_html=>get_instance( )->add_tab_ch( it_tab = mt_gen_area )->show( ).
+    zcl_lsp012_html=>get_instance( )->add_tab_ch( it_tab = mt_gen_area )->show( ).
   ENDMETHOD.                    "lif_area~show
 
   METHOD lif_area~v.

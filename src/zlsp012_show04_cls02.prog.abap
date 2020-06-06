@@ -359,7 +359,8 @@ CLASS lcl_factory_meth IMPLEMENTATION.
         iv_val = 'Value for STEP2'
     ).
 
-    zcl_lsp010_html=>get_instance( )->add_tab_ch(
+    "zcl_lsp010_html=>get_instance( )->add_tab_ch(
+    zcl_lsp012_html=>get_instance( )->add_tab_ch(
     it_tab = lo_vals->get_tab( ) )->show( ).
   ENDMETHOD.                    "run_step2
 
@@ -373,7 +374,8 @@ CLASS lcl_factory_meth IMPLEMENTATION.
         iv_id  = 'ZID_STEP3_PLANT'
         iv_val = 'Value for STEP3_MM' ).
 
-    zcl_lsp010_html=>get_instance( )->add_tab_ch(
+    "zcl_lsp010_html=>get_instance( )->add_tab_ch(
+    zcl_lsp012_html=>get_instance( )->add_tab_ch(
     it_tab = lo_vals->get_tab( ) )->show( ).
   ENDMETHOD.                    "run_step3
 ENDCLASS.

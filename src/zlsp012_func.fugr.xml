@@ -35,19 +35,16 @@
        <PARAMETER>IV_TRYNUM</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Loop Index</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>ET_RATES</PARAMETER>
        <KIND>P</KIND>
        <STEXT>ZTLSP012_RATES -&gt; tab</STEXT>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>EV_CHANGED</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Single-Character Flag</STEXT>
-       <INDEX> 003</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -66,7 +63,6 @@
        <PARAMETER>IV_GUID</PARAMETER>
        <KIND>P</KIND>
        <STEXT>UUID in character form</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

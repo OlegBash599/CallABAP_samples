@@ -183,7 +183,8 @@ CLASS lcl_composite IMPLEMENTATION.
         et_id_val = lt_id_val
     ).
 
-    zcl_lsp010_html=>get_instance( )->add_tab_ch( it_tab = lt_id_val )->show( ).
+"    zcl_lsp010_html=>get_instance( )->add_tab_ch( it_tab = lt_id_val )->show( ).
+    zcl_lsp012_html=>get_instance( )->add_tab_ch( it_tab = lt_id_val )->show( ).
 
   ENDMETHOD.                    "main
 

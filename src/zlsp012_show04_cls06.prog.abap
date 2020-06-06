@@ -19,7 +19,8 @@ CLASS lcl_xml2itab DEFINITION.
 
   PRIVATE SECTION.
 
-    DATA mo_html TYPE REF TO zcl_lsp010_html.
+"    DATA mo_html TYPE REF TO zcl_lsp010_html.
+    DATA mo_html TYPE REF TO zcl_lsp012_html.
     DATA mv_xml_str TYPE string.
     DATA mv_xml_xstr TYPE xstring.
 
@@ -43,7 +44,8 @@ CLASS lcl_xml2itab IMPLEMENTATION.
   METHOD constructor.
     fill_init_data( ).
 
-    mo_html = zcl_lsp010_html=>get_instance( ).
+"    mo_html = zcl_lsp010_html=>get_instance( ).
+    mo_html = zcl_lsp012_html=>get_instance( ).
 
   ENDMETHOD.                    "constructor
 

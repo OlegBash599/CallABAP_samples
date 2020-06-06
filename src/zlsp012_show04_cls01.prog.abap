@@ -29,7 +29,7 @@ CLASS lcl_singleton_sample IMPLEMENTATION.
 *    create OBJECT lo_html.
 
 
-    zcl_lsp010_html=>get_instance( iv_title = lv_title )->add_para_val_ch(
+    ZCL_LSP012_HTML=>get_instance( iv_title = lv_title )->add_para_val_ch(
         iv_id    = 'ZZZID1'
         iv_value = 'Value for ID1'
     ).
@@ -41,7 +41,8 @@ CLASS lcl_singleton_sample IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD run_step1.
-    zcl_lsp010_html=>get_instance( )->add_para_val_ch(
+ "   zcl_lsp010_html=>get_instance( )->add_para_val_ch(
+    ZCL_LSP012_HTML=>get_instance( )->add_para_val_ch(
         iv_id    = 'ZZZID_STEP1'
         iv_value = 'Value for STEP1'
     ).
@@ -49,9 +50,9 @@ CLASS lcl_singleton_sample IMPLEMENTATION.
 
   METHOD run_step2.
     DATA lo_html TYPE REF TO zcl_lsp012_html.
-    DATA lt_ztvarv TYPE STANDARD TABLE OF ztlsp010_tvarvc.
+    DATA lt_ztvarv TYPE STANDARD TABLE OF ztlsp012_tvarvc.
 
-    SELECT * FROM ztlsp010_tvarvc
+    SELECT * FROM ztlsp012_tvarvc
       INTO TABLE lt_ztvarv
       UP TO 1000 ROWS.
 
@@ -64,7 +65,8 @@ CLASS lcl_singleton_sample IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD run_step3.
-    zcl_lsp010_html=>get_instance(  )->show( ).
+   " zcl_lsp010_html=>get_instance(  )->show( ).
+    zcl_lsp012_html=>get_instance(  )->show( ).
   ENDMETHOD.
 
 ENDCLASS.

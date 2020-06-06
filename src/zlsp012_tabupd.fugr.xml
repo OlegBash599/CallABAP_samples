@@ -29,12 +29,10 @@
        <PARAMETER>IV_TABNAME</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Table Name</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>IV_JSON_STR</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 002</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

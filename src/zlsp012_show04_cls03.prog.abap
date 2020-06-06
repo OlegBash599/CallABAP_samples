@@ -4,7 +4,7 @@
 
 INTERFACE lif_reader.
   TYPES: BEGIN OF ts_task_list.
-          INCLUDE TYPE ztlsp010_tsklist.
+          INCLUDE TYPE ztlsp012_tsklist.
   TYPES: END OF ts_task_list
         , tt_task_list TYPE STANDARD TABLE OF ts_task_list
             WITH DEFAULT KEY
@@ -26,7 +26,7 @@ ENDINTERFACE.                    "lif_reader
 *----------------------------------------------------------------------*
 INTERFACE lif_writer.
   TYPES: BEGIN OF ts_task_list.
-          INCLUDE TYPE ztlsp010_tsklist.
+          INCLUDE TYPE ztlsp012_tsklist.
   TYPES: END OF ts_task_list
         , tt_task_list TYPE STANDARD TABLE OF ts_task_list
             WITH DEFAULT KEY
@@ -342,7 +342,8 @@ CLASS lcl_reader_db IMPLEMENTATION.
 
   METHOD lif_reader~get_data.
 
-    SELECT * FROM ztlsp010_tsklist
+"    SELECT * FROM ztlsp010_tsklist
+    SELECT * FROM ztlsp012_tsklist
       INTO TABLE lif_reader~mt_task_list
       UP TO 1000 ROWS.
 
@@ -411,7 +412,8 @@ CLASS lcl_writer_db IMPLEMENTATION.
   ENDMETHOD.                    "constructor
 
   METHOD lif_writer~write_data.
-    MODIFY ztlsp010_tsklist FROM TABLE  lif_writer~mt_task_list.
+"    MODIFY ztlsp010_tsklist FROM TABLE  lif_writer~mt_task_list.
+    MODIFY ztlsp012_tsklist FROM TABLE  lif_writer~mt_task_list.
   ENDMETHOD.                    "lif_writer~write_data
   METHOD lif_writer~set_data.
     lif_writer~mt_task_list[] = it_task_list[].

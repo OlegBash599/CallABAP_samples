@@ -358,7 +358,8 @@ CLASS lcl_facade IMPLEMENTATION.
         ct_steps = lt_steps
     ).
 
-    zcl_lsp010_html=>get_instance( )->add_tab_ch( it_tab = lt_steps )->show( ).
+    "zcl_lsp010_html=>get_instance( )->add_tab_ch( it_tab = lt_steps )->show( ).
+    zcl_lsp012_html=>get_instance( )->add_tab_ch( it_tab = lt_steps )->show( ).
 
   ENDMETHOD.                    "main
 

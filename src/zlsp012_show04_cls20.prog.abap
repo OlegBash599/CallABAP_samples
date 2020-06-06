@@ -285,7 +285,7 @@ CLASS lcl_dt2cust_xl IMPLEMENTATION.
           bytecount TYPE i.
 
 
-    DATA lo_excel                TYPE REF TO zcl_excel.
+    DATA lo_excel                TYPE REF TO zcl_excel. " abap2xlsx - need to be imported
     DATA lo_worksheet            TYPE REF TO zcl_excel_worksheet.
     DATA: ls_table_settings       TYPE zexcel_s_table_settings.
 
