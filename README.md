@@ -11,4 +11,4 @@ Call ABAP: object oriented patters
 https://github.com/sapmentors/abap2xlsx
 
 <h3>Wiki</h3>
-1. [Агрегирующие-функции-в-подзапросах-ABAP-SQL](https://github.com/OlegBash599/CallABAP_samples/wiki/Агрегирующие-функции-в-подзапросах-ABAP-SQL)
+1. [Агрегирующие функции в подзапросах ABAP SQL](https://github.com/OlegBash599/CallABAP_samples/wiki/Агрегирующие-функции-в-подзапросах-ABAP-SQL)
