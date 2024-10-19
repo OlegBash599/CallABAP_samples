@@ -1,4 +1,4 @@
 ## Кварцевая шкатулка (Q01) - простые операции с датой и временем
 1) Системные переменные (SYST) для даты и времени
 2) Конвертация даты и времени (преобразование во внешний формат)
-3) (Арифметические операции с датой и временем)[https://github.com/OlegBash599/CallABAP_samples/blob/master/ZC8A014Q01/src/zrep_c8a014_datetime_cls12.prog.abap]
+3) [Арифметические операции с датой и временем](https://github.com/OlegBash599/CallABAP_samples/blob/master/ZC8A014Q01/src/zrep_c8a014_datetime_cls12.prog.abap)
