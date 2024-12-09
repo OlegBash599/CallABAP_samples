@@ -1,4 +1,4 @@
-REPORT zrep_c8a014_cmplr_vs_runtime.
+REPORT zrep_c8a014_cmplr_vs_runtime2.
 
 CLASS lcl_app DEFINITION.
 
@@ -16,11 +16,15 @@ CLASS lcl_app DEFINITION.
       , tt_name_val_srt TYPE SORTED TABLE OF ts_name_val WITH UNIQUE KEY key_name
       .
 
+    DATA msr_name_val TYPE REF TO ts_name_val.
+
     METHODS fill_add_value
       CHANGING cs_name_val TYPE ts_name_val.
 
     METHODS fill_add_value_ref
       IMPORTING isr_name_val TYPE REF TO ts_name_val.
+
+    METHODS fill_add_value_via_attr.
 ENDCLASS.
 
 CLASS lcl_app IMPLEMENTATION.
@@ -41,6 +45,12 @@ CLASS lcl_app IMPLEMENTATION.
       fill_add_value_ref( isr_name_val = REF #( <fs_name_val> ) ).
     ENDLOOP.
 
+    " also could be used
+    LOOP AT lt_name_val REFERENCE INTO msr_name_val.
+      fill_add_value_via_attr( ).
+    ENDLOOP.
+
+
   ENDMETHOD.
 
   METHOD fill_add_value.
@@ -51,6 +61,13 @@ CLASS lcl_app IMPLEMENTATION.
     "IMPORTING isr_name_val TYPE REF TO ts_name_val.
     isr_name_val->add_value = 'some val'.
   ENDMETHOD.
+
+  METHOD fill_add_value_via_attr.
+    IF msr_name_val IS BOUND.
+      msr_name_val->add_value  = 'some val'.
+    ENDIF.
+  ENDMETHOD.
+
 ENDCLASS.
 
 START-OF-SELECTION.
