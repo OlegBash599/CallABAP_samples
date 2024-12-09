@@ -1,4 +1,6 @@
 REPORT zrep_c8a014_cmplr_vs_runtime.
+"" пример, которые вызывает runtime error 
+"" MOVE_TO_LIT_NOTALLOWED_NODATA	CX_SY_DYN_CALL_ILLEGAL_TYPE
 
 CLASS lcl_app DEFINITION.
 
