@@ -143,7 +143,8 @@ CLASS lcl_app IMPLEMENTATION.
 
     FIELD-SYMBOLS <fs_some_forecast> TYPE ts_forecast.
 
-    SORT mt_some_forecast BY matnr werks .
+    SORT mt_some_forecast BY matnr werks
+                             budat DESCENDING.
 
     LOOP AT mt_some_forecast ASSIGNING <fs_some_forecast>.
       INSERT <fs_some_forecast> INTO TABLE lt_tab_with_max_date.
@@ -154,13 +155,22 @@ CLASS lcl_app IMPLEMENTATION.
     DATA lt_tab_with_max_date TYPE tt_forecast.
 
     FIELD-SYMBOLS <fs_some_forecast> TYPE ts_forecast.
+    FIELD-SYMBOLS <fs_with_max_date> TYPE ts_forecast.
     FIELD-SYMBOLS <fs_some_grp> TYPE ts_forecast.
+
+    SORT mt_some_forecast BY matnr werks
+                             budat DESCENDING.
 
     LOOP AT mt_some_forecast ASSIGNING <fs_some_grp> " it is group- pseudo-oboject - not LINE, but GROUP
           GROUP BY ( key1 = <fs_some_grp>-matnr  key2 = <fs_some_grp>-werks ). " you are providing keys
 
       LOOP AT GROUP <fs_some_grp> ASSIGNING <fs_some_forecast>. " here we get LINE from GROUP
-        APPEND <fs_some_forecast> TO lt_tab_with_max_date.
+        READ TABLE mt_some_forecast ASSIGNING <fs_with_max_date>
+            WITH KEY matnr = <fs_some_forecast>-matnr
+                     werks = <fs_some_forecast>-werks.
+        IF sy-subrc EQ 0.
+          APPEND <fs_with_max_date> TO lt_tab_with_max_date.
+        ENDIF.
       ENDLOOP.
 
     ENDLOOP.
@@ -177,11 +187,15 @@ CLASS lcl_app IMPLEMENTATION.
         , END OF ts_key_line
         .
     FIELD-SYMBOLS <fs_some_forecast> TYPE ts_forecast.
+    FIELD-SYMBOLS <fs_with_max_date> TYPE ts_forecast.
     FIELD-SYMBOLS <fs_some_grp> TYPE ts_forecast.
 
     FIELD-SYMBOLS <fs_key_line> TYPE ts_key_line.
 
     CLEAR lt_tab_with_max_date.
+
+    SORT mt_some_forecast BY matnr werks
+                             budat DESCENDING.
 
     """ IF need oly keys - you can use WITHOUT MEMBERS
 
@@ -190,8 +204,15 @@ CLASS lcl_app IMPLEMENTATION.
           WITHOUT MEMBERS " and here we get only keys without addition fields
       ASSIGNING <fs_key_line>. " in case without membes we could not LOOP at GROUP
 
-      APPEND INITIAL LINE TO lt_tab_with_max_date ASSIGNING <fs_some_forecast> .
-      MOVE-CORRESPONDING <fs_key_line> TO <fs_some_forecast>.
+      READ TABLE mt_some_forecast ASSIGNING <fs_with_max_date>
+            WITH KEY matnr = <fs_some_forecast>-matnr
+                     werks = <fs_some_forecast>-werks.
+      IF sy-subrc EQ 0.
+        APPEND INITIAL LINE TO lt_tab_with_max_date ASSIGNING <fs_some_forecast> .
+        MOVE-CORRESPONDING <fs_with_max_date> TO <fs_some_forecast>.
+        APPEND <fs_with_max_date> TO lt_tab_with_max_date.
+      ENDIF.
+
 
     ENDLOOP.
   ENDMETHOD.
