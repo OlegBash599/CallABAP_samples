@@ -25,7 +25,7 @@ CLASS lcl_app DEFINITION.
           , tt_matnr_werks TYPE STANDARD TABLE OF ts_matnr_werks WITH DEFAULT KEY
           .
 
-        DATA mt_tab_matnr TYPE tt_matnr_werks.
+    DATA mt_tab_matnr TYPE tt_matnr_werks.
 
     METHODS _do_load_prefill.
 
@@ -33,6 +33,7 @@ CLASS lcl_app DEFINITION.
     METHODS _sel_one_no_sum_fld_lgort.
     METHODS _sel_one_no_sum_join_lgort.
     METHODS _sel_one_no_sum_lgort.
+    METHODS _sel_one_cds4_all.
 
 ENDCLASS.
 
@@ -81,25 +82,25 @@ CLASS lcl_app IMPLEMENTATION.
     INTO TABLE @DATA(lt_stock).
   ENDMETHOD.
 
-METHOD _sel_one_no_sum_fld_lgort.
-      SELECT zcds1~matnr,
-              zcds1~werks,
-              zcds1~lgort,
-              zcds2~stock
-    FROM zmard_cds1_m AS zcds1
-    INNER JOIN zmard_cds2_w AS zcds2 ON zcds2~matnr = zcds1~matnr
-    FOR ALL ENTRIES IN @mt_tab_matnr
-         WHERE zcds1~matnr = @mt_tab_matnr-matnr
-           AND zcds1~werks = @mt_tab_matnr-werks
-           AND zcds1~lgort IN @s_lgort
-    INTO TABLE @DATA(lt_stock).
-ENDMETHOD.
+  METHOD _sel_one_no_sum_fld_lgort.
+    SELECT zcds1~matnr,
+            zcds1~werks,
+            zcds1~lgort,
+            zcds2~stock
+  FROM zmard_cds1_m AS zcds1
+  INNER JOIN zmard_cds2_w AS zcds2 ON zcds2~matnr = zcds1~matnr
+  FOR ALL ENTRIES IN @mt_tab_matnr
+       WHERE zcds1~matnr = @mt_tab_matnr-matnr
+         AND zcds1~werks = @mt_tab_matnr-werks
+         AND zcds1~lgort IN @s_lgort
+  INTO TABLE @DATA(lt_stock).
+  ENDMETHOD.
 
-METHOD _sel_one_no_sum_join_lgort.
+  METHOD _sel_one_no_sum_join_lgort.
 
-endmethod.
+  ENDMETHOD.
 
-METHOD _sel_one_no_sum_lgort.
+  METHOD _sel_one_no_sum_lgort.
 
 *  define view ZMARD_CDS3_W as select from ZMARD_CDS1_M
 *{
@@ -118,7 +119,26 @@ METHOD _sel_one_no_sum_lgort.
            AND zcds1~werks = @mt_tab_matnr-werks
            AND zcds1~lgort IN @s_lgort
     INTO TABLE @DATA(lt_stock).
-endmethod.
+  ENDMETHOD.
+
+  METHOD _sel_one_cds4_all.
+*define view ZMARD_CDS4_W as select from ZMARD_CDS1_M
+*{
+*    key matnr,
+*    key werks,
+*    key lgort,
+*    sum(labst) as stock
+*} group by matnr, werks, lgort
+
+    SELECT matnr, stock
+    FROM ZMARD_CDS4_W
+    FOR ALL ENTRIES IN @mt_tab_matnr
+         WHERE matnr = @mt_tab_matnr-matnr
+           AND werks = @mt_tab_matnr-werks
+           AND lgort IN @s_lgort
+    INTO TABLE @DATA(lt_stock).
+
+  ENDMETHOD.
 
   METHOD _do_load_prefill.
     DATA lt_zmard_sample TYPE STANDARD TABLE OF zmard WITH DEFAULT KEY.
