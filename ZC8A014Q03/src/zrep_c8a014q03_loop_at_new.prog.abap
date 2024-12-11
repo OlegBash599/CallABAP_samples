@@ -161,17 +161,19 @@ CLASS lcl_app IMPLEMENTATION.
     SORT mt_some_forecast BY matnr werks
                              budat DESCENDING.
 
+    " this is a quite overhead approach in your case
+
     LOOP AT mt_some_forecast ASSIGNING <fs_some_grp> " it is group- pseudo-oboject - not LINE, but GROUP
           GROUP BY ( key1 = <fs_some_grp>-matnr  key2 = <fs_some_grp>-werks ). " you are providing keys
 
-      LOOP AT GROUP <fs_some_grp> ASSIGNING <fs_some_forecast>. " here we get LINE from GROUP
-        READ TABLE mt_some_forecast ASSIGNING <fs_with_max_date>
-            WITH KEY matnr = <fs_some_forecast>-matnr
-                     werks = <fs_some_forecast>-werks.
+     " LOOP AT GROUP <fs_some_grp> ASSIGNING <fs_some_forecast>. " here we get LINE from GROUP
+        READ TABLE mt_some_forecast ASSIGNING <fs_some_forecast>
+            WITH KEY matnr = <fs_some_grp>-matnr
+                     werks = <fs_some_grp>-werks.
         IF sy-subrc EQ 0.
-          APPEND <fs_with_max_date> TO lt_tab_with_max_date.
+          APPEND <fs_some_forecast> TO lt_tab_with_max_date.
         ENDIF.
-      ENDLOOP.
+      "ENDLOOP.
 
     ENDLOOP.
 
@@ -205,12 +207,11 @@ CLASS lcl_app IMPLEMENTATION.
       ASSIGNING <fs_key_line>. " in case without membes we could not LOOP at GROUP
 
       READ TABLE mt_some_forecast ASSIGNING <fs_with_max_date>
-            WITH KEY matnr = <fs_some_forecast>-matnr
-                     werks = <fs_some_forecast>-werks.
+            WITH KEY matnr = <fs_key_line>-matnr
+                     werks = <fs_key_line>-werks.
       IF sy-subrc EQ 0.
         APPEND INITIAL LINE TO lt_tab_with_max_date ASSIGNING <fs_some_forecast> .
         MOVE-CORRESPONDING <fs_with_max_date> TO <fs_some_forecast>.
-        APPEND <fs_with_max_date> TO lt_tab_with_max_date.
       ENDIF.
 
 
