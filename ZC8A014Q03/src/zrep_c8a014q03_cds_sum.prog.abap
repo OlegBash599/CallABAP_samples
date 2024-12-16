@@ -34,6 +34,7 @@ CLASS lcl_app DEFINITION.
     METHODS _sel_one_no_sum_join_lgort.
     METHODS _sel_one_no_sum_lgort.
     METHODS _sel_one_cds4_all.
+    METHODS _sel_one_cds4_all_matnr.
 
 ENDCLASS.
 
@@ -58,7 +59,7 @@ CLASS lcl_app IMPLEMENTATION.
     _sel_one_no_sum_fld_lgort( ).
     _sel_one_no_sum_join_lgort( ).
     _sel_one_no_sum_lgort( ).
-
+    _sel_one_cds4_all_matnr( ).
     """""""""""""""""""""""""""""""""""""
 
 
@@ -131,12 +132,41 @@ CLASS lcl_app IMPLEMENTATION.
 *} group by matnr, werks, lgort
 
     SELECT matnr, stock
-    FROM ZMARD_CDS4_W
+    FROM zmard_cds4_w
     FOR ALL ENTRIES IN @mt_tab_matnr
          WHERE matnr = @mt_tab_matnr-matnr
            AND werks = @mt_tab_matnr-werks
            AND lgort IN @s_lgort
     INTO TABLE @DATA(lt_stock).
+
+  ENDMETHOD.
+
+  METHOD _sel_one_cds4_all_matnr.
+
+        TYPES: BEGIN OF ts_matnr_werks
+            , matnr TYPE matnr18
+            , werks TYPE werks_d
+          , END OF ts_matnr_werks
+          , tt_matnr_werks_srt TYPE sorted TABLE OF ts_matnr_werks WITH UNIQUE key matnr werks
+          .
+
+     data lt_tab_matnr_srt TYPE tt_matnr_werks_srt.
+     FIELD-SYMBOLS <fs_tab_matnr> TYPE ts_matnr_werks.
+
+    " just to prepare sorted table
+    loop at mt_tab_matnr ASSIGNING <fs_tab_matnr>.
+      INSERT <fs_tab_matnr> INTO TABLE lt_tab_matnr_srt.
+    ENDLOOP.
+
+    select z1~matnr, sum( labst ) as stock
+        FROM zmard as z1
+          join @lt_tab_matnr_srt as z2
+        on z1~matnr eq z2~matnr
+        and z1~werks eq z2~werks
+      WHERE z1~lgort in @s_lgort
+      GROUP BY z1~matnr
+      INTO TABLE @data(lt_stock)
+      .
 
   ENDMETHOD.
 
