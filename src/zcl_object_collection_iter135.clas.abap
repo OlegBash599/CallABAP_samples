@@ -36,6 +36,8 @@ CLASS ZCL_OBJECT_COLLECTION_ITER135 IMPLEMENTATION.
 
 
   METHOD CONSTRUCTOR .
+" also is here sample
+" https://github.com/OlegBash599/AnyTabUpdateTask/blob/main/src/zcl_c8a005_group_tab.clas.abap
     me->collection = collection.
   ENDMETHOD.
 
