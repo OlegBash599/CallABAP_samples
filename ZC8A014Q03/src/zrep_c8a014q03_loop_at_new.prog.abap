@@ -46,6 +46,11 @@ ENDCLASS.
 CLASS lcl_app IMPLEMENTATION.
   METHOD main.
 
+    data lv_upto TYPE sydatum VALUE '20250101'.
+
+    data(lv_days) = lv_upto - sy-datum.
+    BREAK-POINT.
+
 
 
     _do_load_prefill( ).
