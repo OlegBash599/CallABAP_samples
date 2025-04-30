@@ -1,0 +1,82 @@
+CLASS ltc_terun DEFINITION DEFERRED.
+CLASS zcl_c8a014_ut_coverage DEFINITION LOCAL FRIENDS ltc_terun.
+
+CLASS ltc_terun DEFINITION FOR TESTING
+    RISK LEVEL HARMLESS
+    DURATION SHORT INHERITING FROM cl_aunit_assert
+.
+
+  PUBLIC SECTION.
+    METHODS ut_run_with_status_int FOR TESTING.
+
+    METHODS ut_run_with_status_char FOR TESTING.
+
+    METHODS ut_simple_if_no_else FOR TESTING.
+
+  PROTECTED SECTION.
+
+  PRIVATE SECTION.
+    DATA mo_cut TYPE REF TO zcl_c8a014_ut_coverage.
+
+
+    METHODS setup.
+    METHODS teardown.
+
+ENDCLASS.
+
+
+CLASS ltc_terun IMPLEMENTATION.
+
+  METHOD setup.
+    mo_cut = NEW #(  ).
+  ENDMETHOD.
+
+  METHOD teardown.
+    CLEAR mo_cut .
+  ENDMETHOD.
+
+  METHOD ut_run_with_status_int.
+
+    DATA lv_status TYPE string VALUE 1.
+    DATA lv_res       TYPE sysubrc.
+
+    mo_cut->compare_status( EXPORTING iv_status_in = lv_status
+                            IMPORTING ev_res       = lv_res ).
+
+    lv_status = 2.
+    mo_cut->compare_status( EXPORTING iv_status_in = lv_status
+                            IMPORTING ev_res       = lv_res ).
+
+    lv_status = 3.
+    mo_cut->compare_status( EXPORTING iv_status_in = lv_status
+                            IMPORTING ev_res       = lv_res ).
+
+
+  ENDMETHOD.
+
+  METHOD ut_run_with_status_char.
+
+    DATA lv_status TYPE string VALUE 1.
+    DATA lv_res       TYPE sysubrc.
+
+    lv_status = sy-abcde(1).
+    mo_cut->compare_status( EXPORTING iv_status_in = lv_status
+                            IMPORTING ev_res       = lv_res ).
+
+  ENDMETHOD.
+
+  METHOD ut_simple_if_no_else.
+
+    DATA lv_status TYPE string VALUE '10'.
+    DATA lv_res       TYPE sysubrc.
+
+    mo_cut->coverage_for_if_no_else( iv_status_in = lv_status ).
+
+
+    " from 66 to 100
+    lv_status = '20'.
+    mo_cut->coverage_for_if_no_else( iv_status_in = lv_status ).
+
+  ENDMETHOD.
+
+ENDCLASS.
