@@ -7,4 +7,4 @@ Let we have a snippet like the following
     lr_tab_t000 = REF #( lt_t000 ).
 ```
 
-Full code-list is presented (here)[https://github.com/OlegBash599/CallABAP_samples/blob/master/ZC8A014Q08/ZREP_C8A014Q08_DEBUGGER_REF.prog.abap]
+Full code-list is presented [here](https://github.com/OlegBash599/CallABAP_samples/blob/master/ZC8A014Q08/ZREP_C8A014Q08_DEBUGGER_REF.prog.abap)
