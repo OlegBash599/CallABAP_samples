@@ -24,4 +24,4 @@ Full code-list is presented [here](https://github.com/OlegBash599/CallABAP_sampl
 
 if we will try to display references to the lt_t000 via special button in the debugger, we will get only information abaout field-symbols <fs_tab_t000>, but not about lr_tab_t000.
 
-![Screen from Debugger](https://github.com/OlegBash599/CallABAP_samples/blob/master/ZC8A014Q08/ZREP_C8A014Q08_DEBUGGER_REF.prog.abap)
+![Screen from Debugger](https://github.com/OlegBash599/CallABAP_samples/blob/master/ZC8A014Q08/pict1_no_ref.png)
